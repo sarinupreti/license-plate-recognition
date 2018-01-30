@@ -9,39 +9,30 @@ import Main
 import Preprocess
 import PossibleChar
 
-# module level variables ##########################################################################
-
+# module variables
 kNearest = cv2.ml.KNearest_create()
-
-        # constants for checkIfPossibleChar, this checks one possible char only (does not compare to another char)
+        #checks one possible char only (does not compare to another char)
 MIN_PIXEL_WIDTH = 2
 MIN_PIXEL_HEIGHT = 8
-
 MIN_ASPECT_RATIO = 0.25
 MAX_ASPECT_RATIO = 1.0
-
 MIN_PIXEL_AREA = 80
-
         # constants for comparing two chars
 MIN_DIAG_SIZE_MULTIPLE_AWAY = 0.3
 MAX_DIAG_SIZE_MULTIPLE_AWAY = 5.0
-
 MAX_CHANGE_IN_AREA = 0.5
-
 MAX_CHANGE_IN_WIDTH = 0.8
 MAX_CHANGE_IN_HEIGHT = 0.2
-
 MAX_ANGLE_BETWEEN_CHARS = 12.0
-
         # other constants
 MIN_NUMBER_OF_MATCHING_CHARS = 3
-
 RESIZED_CHAR_IMAGE_WIDTH = 20
 RESIZED_CHAR_IMAGE_HEIGHT = 30
-
 MIN_CONTOUR_AREA = 100
 
 ###################################################################################################
+###################################################################################################
+
 def loadKNNDataAndTrainKNN():
     allContoursWithData = []                # declare empty lists,
     validContoursWithData = []              # we will fill these shortly
@@ -61,17 +52,15 @@ def loadKNNDataAndTrainKNN():
         np.os.system("pause")
         return False                                                                        # and return False
     # end try
-
     npaClassifications = npaClassifications.reshape((npaClassifications.size, 1))       # reshape numpy array to 1d, necessary to pass to call to train
-
     kNearest.setDefaultK(1)                                                             # set default K to 1
-
     kNearest.train(npaFlattenedImages, cv2.ml.ROW_SAMPLE, npaClassifications)           # train KNN object
-
     return True                             # if we got here training was successful so return true
 # end function
 
 ###################################################################################################
+###################################################################################################
+
 def detectCharsInPlates(listOfPossiblePlates):
     intPlateCounter = 0
     imgContours = None
@@ -120,6 +109,7 @@ def detectCharsInPlates(listOfPossiblePlates):
 
             cv2.imshow("6", imgContours)
         # end if # show steps #####################################################################
+
 
                 # given a list of all possible chars, find groups of matching chars within the plate
         listOfListsOfMatchingCharsInPlate = findListOfListsOfMatchingChars(listOfPossibleCharsInPlate)

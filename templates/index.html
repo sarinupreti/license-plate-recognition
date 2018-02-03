@@ -1,10 +1,108 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+.body{
+    background-color: black;
+}
+
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    width: 60%;
+    height: 100%;
+    background-color: white;
+    margin: 0 auto; /* Added */
+    float: none; /* Added */
+    margin-bottom: 10px; /* Added */
+}
+
+.card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.container {
+    padding: 2px 16px;
+}
+
+    * {
+  box-sizing: border-box;
+}
+
+#wrapper {
+  margin: 80px auto;
+    align-content:center;
+    align-items: center;
+    justify-content: center;
+    margin-left: 30%;
+}
+
+.button {
+  position: relative;
+  display: inline-block;
+  width: 150px;
+  height: 150px;
+  margin: 0px 40px;
+  border-radius: 150px;
+  box-shadow: inset 0px -2px 12px -2px #b5b5b5;
+  border-top: 1px solid #cfcbcf;
+
+}
+.button:before {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  content: '';
+  width: 120px;
+  height: 120px;
+  border-radius: 120px;
+  box-shadow: 0px 2px 6px #a3a3a3,
+    					0px 0px 1px #918e91 inset;
+}
+.one:before {
+  background-image: url('https://png.icons8.com/metro/50/000000/exercise.png');
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.two:before {
+  background-image: url('https://png.icons8.com/metro/50/000000/picture.png');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 50px 50px, 100% 100%;
+}
+.two:hover {
+  box-shadow: inset 0px 0px 16px -2px #707070;
+}
+.one:hover {
+  box-shadow: inset 0px 0px 7px #8a8a8a;
+}
+.two:active:before {
+  box-shadow: inset 0px 0px 7px #8a8a8a;
+}
+.one:active {
+  box-shadow: inset 0px 0px 16px -2px #707070;
+}
+</style>
+
 </head>
-<body>
-$END$
+<body  style="background-color: #000000">
+
+<h2>Card</h2>
+
+<div class="card">
+  <div class="container">
+    <div class="buttons">
+        <div id="wrapper">
+            <h2 action=""> DETECTED NUMBER PLATE : </h2>
+            <!--<div class="button one"></div>-->
+            <!--<div class="button two" action = "http://localhost:5000/uploader" method = "POST" ></div>-->
+        </div>
+    </div>
+
+  </div>
+</div>
+
 </body>
 </html>

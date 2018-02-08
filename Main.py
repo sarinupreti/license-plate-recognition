@@ -29,7 +29,6 @@ SCALAR_RED = (0.0, 0.0, 255.0)
 showSteps = False
 
 
-###################################################################################################
 def main():
     dataTraining = DetectCharactersHelper.loadDataAndTrain()  # attempt KNN training
 
@@ -38,7 +37,7 @@ def main():
         return  # and exit program
     # end if
 
-    originalImage = cv2.imread("16.jpg")  # open image
+    originalImage = cv2.imread("0.jpg")  # open image
 
     if originalImage is None:  # if image was not read successfully
         print("\n ERROR:: image not read from the picture \n\n")
@@ -80,7 +79,7 @@ def main():
 
         writeLicensePlateCharsOnImage(originalImage, licPlate)  # write license plate text on the image
 
-        cv2.imshow("original_Image", originalImage)  # showing image again from image comparision
+        cv2.imshow("final_image", originalImage)  # showing image again from image comparision
 
         cv2.imwrite("original_Image.png", originalImage)  # write image out to file
 

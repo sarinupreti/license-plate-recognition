@@ -407,9 +407,9 @@ def recognizeCharsInPlate(imgThresh, listOfMatchingChars):
 
         npaROIResized = imgROIResized.reshape((1, RESIZED_CHAR_IMAGE_WIDTH * RESIZED_CHAR_IMAGE_HEIGHT))        # flatten image into 1d numpy array
 
-        npaROIResized = np.float32(npaROIResized)               # convert from 1d numpy array of ints to 1d numpy array of floats
+        npaROIResized = np.float32(npaROIResized)               # convert from 1d array of ints to 1d numpy array of floats
 
-        retval, npaResults, neigh_resp, dists = kNearest.findNearest(npaROIResized, k = 1)              # finally we can call findNearest !!!
+        retval, npaResults, neigh_resp, dists = kNearest.findNearest(npaROIResized, k = 1)              # call k-Nearest !!!
 
         strCurrentChar = str(chr(int(npaResults[0][0])))            # get character from results
 

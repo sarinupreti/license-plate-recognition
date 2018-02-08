@@ -94,7 +94,7 @@ def detectPlatesInScene(imgOriginalScene):
 
     if Main.showSteps == True: # show steps
         print("\n")
-        cv2.imshow("4a", imgContours)
+        cv2.imshow("Image Contours-A", imgContours)
 
         for i in range(0, len(listOfPossiblePlates)):
             p2fRectPoints = cv2.boxPoints(listOfPossiblePlates[i].rrLocationOfPlateInScene)
@@ -104,11 +104,11 @@ def detectPlatesInScene(imgOriginalScene):
             cv2.line(imgContours, tuple(p2fRectPoints[2]), tuple(p2fRectPoints[3]), Main.SCALAR_RED, 2)
             cv2.line(imgContours, tuple(p2fRectPoints[3]), tuple(p2fRectPoints[0]), Main.SCALAR_RED, 2)
 
-            cv2.imshow("4a", imgContours)
+            cv2.imshow("Image Contours-B", imgContours)
 
             print("possible plate " + str(i) + ", click on any image and press a key to continue . . .")
 
-            cv2.imshow("4b", listOfPossiblePlates[i].imgPlate)
+            cv2.imshow("Image Contours-B", listOfPossiblePlates[i].imgPlate)
             cv2.waitKey(0)
         # end for
 
@@ -149,7 +149,7 @@ def findPossibleCharsInScene(imgThresh):
     if Main.showSteps == True: # show steps
         print("\nstep 2 - len(contours) = " + str(len(contours)))
         print("step 2 - intCountOfPossibleChars = " + str(intCountOfPossibleChars))
-        cv2.imshow("2a", imgContours)
+        cv2.imshow("IMAGE COUTOURS - aB", imgContours)
     # end if # show steps
     return listOfPossibleChars
 # end function

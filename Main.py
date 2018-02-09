@@ -1,35 +1,96 @@
 # Main.py
-
 import os
+from _curses import flash
 from builtins import int, round, tuple, len, float
 
 import cv2
-# from flask import Flask, render_template
-# app = Flask(__name__)
-
+import pymysql
+from flask import Flask, render_template, request
+from werkzeug.utils import secure_filename, redirect
 
 import DetectCharactersHelper
 import DetectPlatesHelper
 
+app = Flask(__name__)
 
-#
-# @app.route('/<numberplate>')
-# def index(licPlate):
-#    return render_template("index.html", numberplate = licPlate)
-#
-# if __name__ == "__main__":
-#     app.run()
+global numberplateintotext
+numberplateintotext = ""
 
-SCALAR_BLACK = (0.0, 0.0, 0.0)
-SCALAR_WHITE = (255.0, 255.0, 255.0)
-SCALAR_YELLOW = (0.0, 255.0, 255.0)
-SCALAR_GREEN = (0.0, 255.0, 0.0)
-SCALAR_RED = (0.0, 0.0, 255.0)
+APP_ROOT = os.path.dirname(os.path.dirname(__file__))
+UPLOAD_FOLDER = '/home/sarin/PycharmProjects/AI_PROJECTS/UPLOAD_FOLDER/'
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+ALLOWED_EXTENSION = ['.jpg, .png, .jpeg, .gif']
 
-showSteps = False
+black = (0.0, 0.0, 0.0)
+white = (255.0, 255.0, 255.0)
+yellow = (0.0, 255.0, 255.0)
+green = (0.0, 255.0, 0.0)
+red = (0.0, 0.0, 255.0)
 
 
-def main():
+@app.route("/", methods=['GET'])
+def index():
+    return render_template("upload.html")
+
+
+def allowed_file(filename):
+    return '.' in filename and \
+           filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSION
+
+
+@app.route("/uploads", methods=['GET', 'POST'])
+def upload():
+    if request.method == 'POST':
+        # check if the post request has the file part
+        if 'file' not in request.files:
+            flash('No file part')
+            return redirect(request.url)
+        file = request.files['file']
+        # if user does not select file, browser also
+        # submit a empty part without filename
+        if file.filename == '':
+            flash('No selected file')
+            print("No fileee")
+            return redirect(request.url)
+        else:
+            filename = secure_filename(file.filename)
+            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+            print("file uploaded ")
+            main(UPLOAD_FOLDER + str(filename))
+            return render_template("completed.html", numberplate=numberplateintotext)
+        # print("Skippeddddd")
+
+
+@app.route("/uploads/data", methods=['GET', 'POST'])
+def data():
+    global results;
+    db = pymysql.connect("localhost", "testuser", "test123", "number_plate_recognition")
+    cursor = db.cursor()
+    sql = "SELECT * FROM information"
+    print(sql)
+    try:
+        # Execute the SQL command
+        cursor.execute(sql)
+
+        results = cursor.fetchall()
+        for row in results:
+            ID = row[0]
+            OwnerName = row[1]
+            Company = row[2]
+            LicenseNumber = row[3]
+            ManufactureDate = row[4]
+            ChassisNo = row[5]
+            print("ID=%s,OwnerName=%s,Company=%s,LicenseNumber=%s,ManufactureDate=%s, ChassisNo=%s" %
+                  (ID, OwnerName, Company, LicenseNumber, ManufactureDate, ChassisNo))
+    except:
+        print("Error: unable to fecth data")
+
+    # disconnect from server
+    db.close()
+    return render_template("data.html", query=results)
+
+
+def main(path):
     dataTraining = DetectCharactersHelper.loadDataAndTrain()  # attempt KNN training
 
     if dataTraining == False:  # if KNN training was not successful
@@ -37,7 +98,8 @@ def main():
         return  # and exit program
     # end if
 
-    originalImage = cv2.imread("0.jpg")  # open image
+    originalImage = cv2.imread(path)  # open image
+    print(path)
 
     if originalImage is None:  # if image was not read successfully
         print("\n ERROR:: image not read from the picture \n\n")
@@ -49,7 +111,7 @@ def main():
 
     listOfPossiblePlates = DetectCharactersHelper.detectCharsInPlates(listOfPossiblePlates)  # detect chars in plates
 
-    cv2.imshow("Original_Image", originalImage)  # show scene image
+    # cv2.imshow("Original_Image", originalImage)  # show scene image
 
     if len(listOfPossiblePlates) == 0:  # if no plates were found
         print("\n ERROR:: no license plates were detected\n")  # print user no plates were found
@@ -61,8 +123,8 @@ def main():
         # suppose the plate with the most recognized chars (the first plate in sorted by string length descending order) is the actual plate
         licPlate = listOfPossiblePlates[0]
 
-        cv2.imshow("Plate_image", licPlate.imgPlate)  # show crop of plate and threshold of plate
-        cv2.imshow("Threshold_image", licPlate.imgThresh)
+        # cv2.imshow("Plate_image", licPlate.imgPlate)  # show crop of plate and threshold of plate
+        # cv2.imshow("Threshold_image", licPlate.imgThresh)
 
         if len(licPlate.strChars) == 0:  # if no chars were found in the plate
             print("\n ERROR :: no characters were detected\n\n")  # show message
@@ -74,18 +136,15 @@ def main():
 
         print("------------------DETECTED-NUMBER PLATE FROM IMAGE----------------------")
         print("\n " + licPlate.strChars + "\n")
-
         print("----------------------------------------")
-
         writeLicensePlateCharsOnImage(originalImage, licPlate)  # write license plate text on the image
-
-        cv2.imshow("final_image", originalImage)  # showing image again from image comparision
-
+        # cv2.imshow("final_image", originalImage)  # showing image again from image comparision
         cv2.imwrite("original_Image.png", originalImage)  # write image out to file
+        cv2.waitKey(0)  # hold windows open until user presses a key
+        # end if else
 
-    # end if else
-
-    cv2.waitKey(0)  # hold windows open until user presses a key
+        global numberplateintotext
+        numberplateintotext = licPlate.strChars
 
     return
 
@@ -96,10 +155,10 @@ def main():
 def drawRedRectangleAroundPlate(imgOriginalScene, licPlate):
     p2fRectPoints = cv2.boxPoints(licPlate.rrLocationOfPlateInScene)  # four sides of rotated rectangle plate
 
-    cv2.line(imgOriginalScene, tuple(p2fRectPoints[0]), tuple(p2fRectPoints[1]), SCALAR_RED, 2)  # draw 4 red lines
-    cv2.line(imgOriginalScene, tuple(p2fRectPoints[1]), tuple(p2fRectPoints[2]), SCALAR_RED, 2)
-    cv2.line(imgOriginalScene, tuple(p2fRectPoints[2]), tuple(p2fRectPoints[3]), SCALAR_RED, 2)
-    cv2.line(imgOriginalScene, tuple(p2fRectPoints[3]), tuple(p2fRectPoints[0]), SCALAR_RED, 2)
+    cv2.line(imgOriginalScene, tuple(p2fRectPoints[0]), tuple(p2fRectPoints[1]), red, 2)  # draw 4 red lines
+    cv2.line(imgOriginalScene, tuple(p2fRectPoints[1]), tuple(p2fRectPoints[2]), red, 2)
+    cv2.line(imgOriginalScene, tuple(p2fRectPoints[2]), tuple(p2fRectPoints[3]), red, 2)
+    cv2.line(imgOriginalScene, tuple(p2fRectPoints[3]), tuple(p2fRectPoints[0]), red, 2)
 
 
 # end function
@@ -149,10 +208,14 @@ def writeLicensePlateCharsOnImage(imgOriginalScene, licPlate):
     # write the text on the image
     cv2.putText(imgOriginalScene, licPlate.strChars,
                 (BottomLowerLeftTextFromNumberPlateX, BottomLowerLeftTextFromNumberPlateY), intFontFace, fltFontScale,
-                SCALAR_YELLOW, intFontThickness)
+                yellow, intFontThickness)
 
 
 # end function
+showSteps = False
 
-if __name__ == "__main__":
-    main()
+# main()
+# database()
+
+if __name__ == '__main__':
+    app.run(debug=True)

@@ -3,7 +3,6 @@
 import cv2
 import numpy as np
 import math
-import Main
 import random
 
 import Preprocess
@@ -16,6 +15,7 @@ PLATE_WIDTH_PADDING_FACTOR = 2.5
 PLATE_HEIGHT_PADDING_FACTOR = 1.5
 
 def detectPlatesInScene(imgOriginalScene):
+    import Main
     listOfPossiblePlates = []                   # this will be the return value
 
     height, width, numChannels = imgOriginalScene.shape
@@ -52,7 +52,7 @@ def detectPlatesInScene(imgOriginalScene):
             contours.append(possibleChar.contour)
         # end for
 
-        cv2.drawContours(imgContours, contours, -1, Main.SCALAR_WHITE)
+        cv2.drawContours(imgContours, contours, -1, Main.white)
         cv2.imshow("2b", imgContours)
     # end if # show steps
 
@@ -99,10 +99,10 @@ def detectPlatesInScene(imgOriginalScene):
         for i in range(0, len(listOfPossiblePlates)):
             p2fRectPoints = cv2.boxPoints(listOfPossiblePlates[i].rrLocationOfPlateInScene)
 
-            cv2.line(imgContours, tuple(p2fRectPoints[0]), tuple(p2fRectPoints[1]), Main.SCALAR_RED, 2)
-            cv2.line(imgContours, tuple(p2fRectPoints[1]), tuple(p2fRectPoints[2]), Main.SCALAR_RED, 2)
-            cv2.line(imgContours, tuple(p2fRectPoints[2]), tuple(p2fRectPoints[3]), Main.SCALAR_RED, 2)
-            cv2.line(imgContours, tuple(p2fRectPoints[3]), tuple(p2fRectPoints[0]), Main.SCALAR_RED, 2)
+            cv2.line(imgContours, tuple(p2fRectPoints[0]), tuple(p2fRectPoints[1]), Main.red, 2)
+            cv2.line(imgContours, tuple(p2fRectPoints[1]), tuple(p2fRectPoints[2]), Main.red, 2)
+            cv2.line(imgContours, tuple(p2fRectPoints[2]), tuple(p2fRectPoints[3]), Main.red, 2)
+            cv2.line(imgContours, tuple(p2fRectPoints[3]), tuple(p2fRectPoints[0]), Main.red, 2)
 
             cv2.imshow("Image Contours-B", imgContours)
 
@@ -121,6 +121,7 @@ def detectPlatesInScene(imgOriginalScene):
 
 
 def findPossibleCharsInScene(imgThresh):
+    import Main
     listOfPossibleChars = []                # this will be the return value
 
     intCountOfPossibleChars = 0
@@ -135,7 +136,7 @@ def findPossibleCharsInScene(imgThresh):
     for i in range(0, len(contours)):                       # for each contour
 
         if Main.showSteps == True: # show steps
-            cv2.drawContours(imgContours, contours, i, Main.SCALAR_WHITE)
+            cv2.drawContours(imgContours, contours, i, Main.white)
         # end if #
 
         possibleChar = PossibleCharacters.PossibleChar(contours[i])

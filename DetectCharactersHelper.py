@@ -5,7 +5,6 @@ import numpy as np
 import math
 import random
 
-import Main
 import Preprocess
 import PossibleCharacters
 
@@ -61,6 +60,7 @@ def loadDataAndTrain():
 
 
 def detectCharsInPlates(listOfPossiblePlates):
+    import Main
     intPlateCounter = 0
     imgContours = None
     contours = []
@@ -104,7 +104,7 @@ def detectCharsInPlates(listOfPossiblePlates):
                 contours.append(possibleChar.contour)
             # end for
 
-            cv2.drawContours(imgContours, contours, -1, Main.SCALAR_WHITE)
+            cv2.drawContours(imgContours, contours, -1, Main.white)
 
             cv2.imshow("6", imgContours)
 
@@ -192,7 +192,7 @@ def detectCharsInPlates(listOfPossiblePlates):
                 contours.append(matchingChar.contour)
             # end for
 
-            cv2.drawContours(imgContours, contours, -1, Main.SCALAR_WHITE)
+            cv2.drawContours(imgContours, contours, -1, Main.white)
 
             cv2.imshow("9", imgContours)
         # end if # show steps #####################################################################
@@ -383,6 +383,7 @@ def removeInnerOverlappingChars(listOfMatchingChars):
 ###################################################################################################
 # this is where we apply the actual char recognition
 def recognizeCharsInPlate(imgThresh, listOfMatchingChars):
+    import Main
     strChars = ""               # this will be the return value, the chars in the lic plate
 
     height, width = imgThresh.shape
@@ -397,7 +398,7 @@ def recognizeCharsInPlate(imgThresh, listOfMatchingChars):
         pt1 = (currentChar.intBoundingRectX, currentChar.intBoundingRectY)
         pt2 = ((currentChar.intBoundingRectX + currentChar.intBoundingRectWidth), (currentChar.intBoundingRectY + currentChar.intBoundingRectHeight))
 
-        cv2.rectangle(imgThreshColor, pt1, pt2, Main.SCALAR_GREEN, 2)           # draw green box around the char
+        cv2.rectangle(imgThreshColor, pt1, pt2, Main.green, 2)           # draw green box around the char
 
                 # crop char out of threshold image
         imgROI = imgThresh[currentChar.intBoundingRectY : currentChar.intBoundingRectY + currentChar.intBoundingRectHeight,

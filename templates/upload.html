@@ -2,9 +2,469 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <style>
+
+        /* fonts */
+        @import url(https://fonts.googleapis.com/css?family=Poiret+One);
+        @import url(https://fonts.googleapis.com/css?family=Open+Sans);
+        @import url(https://fonts.googleapis.com/css?family=Pacifico);
+        @import url(https://fonts.googleapis.com/css?family=Barlow+Condensed);
+
+        html,
+        body {
+            background: #1488CC; /* fallback for old browsers */
+            background: -webkit-linear-gradient(to right, #2B32B2, #1488CC); /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to right, #2B32B2, #1488CC); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        .container {
+            perspective: 2500px;
+
+        }
+
+        .card {
+            background: #e9e9e9;
+            background-image: image("/a.jpg");
+            height: 400px;
+            width: S auto;
+            margin: 0 auto;
+            justify-content: center;
+            margin-top: 200px;
+            border-radius: .2em;
+            box-shadow: 0 2.5em .9em -2em #555;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            overflow: hidden;
+            backface-visibility: hidden;
+            transition: transform .8s cubic-bezier(.63, -0.32, .4, 1.39);
+        }
+
+        .card-flip {
+            transform: rotateY(180deg);
+        }
+
+        .initials {
+            display: inline-block;
+            font-family: 'Poiret One';
+            font-size: 7em;
+            color: #333;
+            font-weight: 500;
+            left: 50%;
+            transform: translateX(-50%);
+            position: relative;
+            text-align: center;
+            border-bottom: 1px solid $ red;
+            margin-bottom: .5rem;
+        }
+
+        .initials-back {
+            font-size: 3em;
+            margin: .5em 0;
+            border-bottom: 1px solid $ red;
+        }
+
+        .desc {
+            font-weight: 200;
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 24px;
+            position: relative;
+            width: 100%;
+            text-align: center;
+        }
+
+        .contact {
+            text-align: center;
+            font-weight: 300;
+            position: relative;
+            margin: 2em 0 1em 0;
+        }
+
+        hr {
+            width: 90%;
+        }
+
+        .twitter-front {
+            width: 100%;
+            text-align: center;
+            margin-top: 1em;
+        }
+
+        #twitter-front {
+
+            text-decoration: none;
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 20px;
+        }
+
+        .links {
+            width: 80%;
+            text-align: center;
+            border-top: 1px solid $ blue;
+            border-bottom: 1px solid $ green;
+            margin: 0 auto;
+        }
+
+        .links > a {
+            margin: 0 1em;
+        }
+
+        #twitter-back {
+            height: 50px;
+            width: 50px;
+        }
+
+        #github-back {
+            height: 35px;
+            width: 35px;
+            position: relative;
+            top: -.4em;
+        }
+
+        #linkedin-back {
+            width: 35px;
+            height: 30px;
+            position: relative;
+            top: -.5em;
+        }
+
+        #email-back {
+            height: 50px;
+            width: 50px;
+        }
+
+        #codepen-back {
+            height: 38px;
+            width: 38px;
+            position: relative;
+            top: -.3em;
+        }
+
+        .outer-ring,
+        .inner-box {
+            fill: #333;
+        }
+
+        #wave {
+            bottom: -1.8em;
+            position: relative;
+        }
+
+        #click-me {
+            color: #fff;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            top: 1em;
+            animation: fade 3s infinite ease-in-out;
+        }
+
+        form {
+            position: relative;
+            width: 500px;
+            margin: 0 30px;
+        }
+
+        form .form--group {
+            margin: 20px;
+        }
+
+        form input {
+            display: block;
+            background-color: #fff;
+            color: #000;
+            font: 14px/1.15 'PT Sans', Helvetica, Arial, sans-serif;
+            border: 1px solid #ccc;
+            border-radius: 25px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+            outline: 0;
+            width: 400px;
+            height: 50px;
+            transition: all 0.5s;
+            padding: 0 40px 0 20px;
+        }
+
+        form input:focus {
+            box-shadow: 0 5px 20px rgba(147, 0, 229, 0.4);
+        }
+
+        form .form__file {
+            position: relative;
+            display: block;
+            font-size: 1em;
+            background-color: #fff;
+            color: #000;
+            width: 400px;
+            border: 1px solid #ccc;
+            border-radius: 25px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+            cursor: text;
+        }
+
+        form .form__file-filename {
+            display: block;
+            color: inherit;
+            opacity: 0.7;
+            width: 340px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            height: 48px;
+            line-height: 48px;
+            padding: 0 0 0 20px;
+        }
+
+        form .form__file-filename.attached {
+            opacity: 1;
+        }
+
+        form .form__file-browse {
+            position: absolute;
+            top: 12px;
+            right: 18px;
+            z-index: 10;
+            display: inline-block;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512' fill='%23663faa'%3E%3Cpath d='M140.8,396.8C64,396.8,0,332.8,0,256S64,115.2,140.8,115.2H409.6c56.32,0,102.4,46.08,102.4,102.4S465.92,320,409.6,320H192c-35.84,0-64-28.16-64-64s28.16-64,64-64H384v38.4H192c-15.36,0-25.6,10.24-25.6,25.6s10.24,25.6,25.6,25.6H409.6c35.84,0,64-28.16,64-64s-28.16-64-64-64H140.8C84.48,153.6,38.4,199.68,38.4,256S84.48,358.4,140.8,358.4H384v38.4Z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: 0;
+            text-indent: -999em;
+            overflow: hidden;
+            white-space: nowrap;
+            text-align: center;
+            cursor: pointer;
+            width: 25px;
+            height: 25px;
+            opacity: 0.7;
+            transition: opacity 0.2s;
+        }
+
+        form .form__file-browse:hover {
+            opacity: 1;
+        }
+
+        form .form__file-input {
+            position: absolute;
+            left: -9999px;
+        }
+
+        form .form--buttons {
+            padding: 10px 20px;
+        }
+
+        form .button {
+            position: relative;
+            display: block;
+            background-image: linear-gradient(to left, #4776e6, #8e54e9, #4776e6);
+            background-position: 0 0;
+            background-size: 1000%;
+            color: #fff;
+            font-size: 16px;
+            font-weight: 700;
+            border: 0;
+            border-radius: 25px;
+            vertical-align: middle;
+            line-height: 45px;
+            outline: 0;
+            cursor: pointer;
+            text-transform: uppercase;
+            white-space: nowrap;
+            transition: all 0.2s ease-in-out;
+            width: 400px;
+            height: 50px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            user-select: none;
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
+            -webkit-touch-callout: none;
+            margin: 0;
+            padding: 0 15px;
+            /* outline */
+        }
+
+        form .button:focus,
+        form .button:hover {
+            background-position: 50% 0;
+            background-size: 150% 50%;
+        }
+
+        form .button:focus,
+        form .button:active {
+            box-shadow: inset 0 0 4px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Placeholder
+           ******************************************************************** */
+        /* Chrome/Opera/Safari */
+        ::-webkit-input-placeholder {
+            color: inherit;
+            opacity: 0.7;
+        }
+
+        /* Firefox 19+ */
+        ::-moz-placeholder {
+            color: inherit;
+            opacity: 0.7;
+        }
+
+        /* IE 10+ */
+        :-ms-input-placeholder {
+            color: inherit;
+            opacity: 0.7;
+        }
+
+        /* Firefox 18- */
+        :-moz-placeholder {
+            color: inherit;
+            opacity: 0.7;
+        }
+
+        /* Mixins
+           ******************************************************************** */
+
+        @keyframes fade {
+            0% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+    </style>
+    <script>
+        $('a').click(function (e) {
+            e.stopPropagation();
+        });
+
+        $('.card').click(function () {
+            $('.card-front').toggleClass('card-flip');
+            $('.card-back').toggleClass('card-flip');
+        });
+        $(function () {
+            $('#file').on('change', function () {
+                var filename = this.value.match(/([^\/\\]+)$/)[1];
+                $(this).parent().find('.form__file-filename').addClass('attached').html(filename);
+            });
+        });
+
+
+    </script>
 </head>
 <body>
-$END$
+
+<span id="click-me">Select a image to upload </span>
+<div class="container">
+    <div class="card card-front">
+        <div class="initials initial-1" style="justify-content= center">&lt;NPR&gt;
+        </div>
+
+        <div class="desc">NUMBER PLATE RECOGNITION</div>
+        <div class="twitter-front">
+            <a id="twitter-front" href="https://willalanjohnson.com" target="_blank">SARIN UPRETI</a>
+        </div>
+
+        <div style="margin-left: 70px ; ">
+            <form role="form" action="/uploads" enctype="multipart/form-data" method="POST">
+
+                <div class="form--group">
+                    <label for="file" class="form__file">
+                        <span class="form__file-filename">Select a file</span>
+                        <span class="form__file-browse">Browse</span>
+                        <input type="file" name="file" class="form__file-input" id="file">
+                    </label>
+                </div>
+
+                <div class="form--buttons">
+                    <button type="submit" value='upload' class="button">Upload</button>
+                </div>
+            </form>
+
+        </div>
+
+
+        <svg id="wave" version="1.1" xmlns="http://www.w3.org/2000/svg"
+             width="640" height="480">
+            <desc iVinci="yes" version="4.6" gridStep="20" showGrid="no" snapToGrid="no" codePlatform="0"/>
+            <g id="Layer1" name="Layer 1" opacity="1">
+                <g id="Shape1">
+                    <desc shapeID="1" type="0" basicInfo-basicType="0" basicInfo-roundedRectRadius="12"
+                          basicInfo-polygonSides="6" basicInfo-starPoints="5"
+                          bounding="rect(-279.878,-31.2762,559.756,62.5526)" text="" font-familyName="Helvetica"
+                          font-pixelSize="20" font-bold="0" font-underline="0" font-alignment="1" strokeStyle="0"
+                          markerStart="0" markerEnd="0" shadowEnabled="0" shadowOffsetX="0" shadowOffsetY="2"
+                          shadowBlur="4"
+                          shadowOpacity="160" blurEnabled="0" blurRadius="4"
+                          transform="matrix(1.03603,0,0.00804184,0.959194,290.713,50.5)" pers-center="0,0"
+                          pers-size="0,0"
+                          pers-start="0,0" pers-end="0,0" locked="0" mesh="" flag=""/>
+                    <path id="shapePath1"
+                          d="M0.985291,78.3775 C16.5257,78.3775 42.8604,82.1398 63.1471,78.3775 C78.2678,75.5732 93.5915,69.3044 104.427,59.1936 C124.987,40.0097 130.696,36.5417 145.708,40.0097 C164.697,44.3964 166.589,59.1936 187.471,78.3775 C198.476,88.4883 213.307,59.1936 228.751,59.1936 C244.195,59.1936 256.058,83.6879 270.353,78.3775 C297.476,68.3016 303.165,25.286 332.032,20.8258 C356.565,17.0354 373.062,47.3313 394.516,59.1936 C407.821,66.5503 420.673,78.3775 436.118,78.3775 C457.959,78.3775 496.919,59.1936 518.76,59.1936 C534.205,59.1936 560.189,78.3775 580.909,78.3775 "
+                          style="stroke:none;fill-rule:evenodd;fill:#fb0044;fill-opacity:0.878431;"/>
+                </g>
+            </g>
+            <g id="Layer2" name="Layer 2" opacity="1">
+                <g id="Shape2">
+                    <desc shapeID="2" type="0" basicInfo-basicType="0" basicInfo-roundedRectRadius="12"
+                          basicInfo-polygonSides="6" basicInfo-starPoints="5"
+                          bounding="rect(-269.999,-35.2583,539.998,70.5166)" text="" font-familyName="Helvetica"
+                          font-pixelSize="20" font-bold="0" font-underline="0" font-alignment="1" strokeStyle="0"
+                          markerStart="0" markerEnd="0" shadowEnabled="0" shadowOffsetX="0" shadowOffsetY="2"
+                          shadowBlur="4"
+                          shadowOpacity="160" blurEnabled="0" blurRadius="4"
+                          transform="matrix(1.03704,0,0,0.911372,280.5,48.1757)" pers-center="0,0" pers-size="0,0"
+                          pers-start="0,0" pers-end="0,0" locked="0" mesh="" flag=""/>
+                    <path id="shapePath2"
+                          d="M0.500061,78.2669 C16.0556,78.2669 41.9815,78.2669 62.7222,78.2669 C109.1,78.2669 124.944,41.812 166.426,23.5845 C203.528,7.28141 207.907,60.0394 228.648,78.2669 C246.274,93.7572 268.203,16.0423 292.78,16.0423 C313.816,16.0423 311.611,20.5 353.093,60.0394 C372.975,78.9906 394.574,78.2669 415.315,78.2669 C437.177,78.2669 476.415,60.0395 498.278,60.0394 C520.14,60.0395 544.944,73.71 560.5,78.2669 "
+                          style="stroke:none;fill-rule:evenodd;fill:url(#radialGradientFill2);fill-opacity:1;"/>
+                    <defs>
+                        <radialGradient id="radialGradientFill2" gradientUnits="userSpaceOnUse" cx="285.313" cy="39.062"
+                                        r="291.115" fx="-188.613" fy="51.8212">
+                            <stop offset="0" stop-color="#ffffff" stop-opacity="1"/>
+                            <stop offset="0.103307" stop-color="#097afc" stop-opacity="0.878431"/>
+                        </radialGradient>
+                    </defs>
+                </g>
+            </g>
+            <g id="Layer3" name="Layer 3" opacity="1">
+                <g id="Shape3">
+                    <desc shapeID="3" type="0" basicInfo-basicType="0" basicInfo-roundedRectRadius="12"
+                          basicInfo-polygonSides="6" basicInfo-starPoints="5"
+                          bounding="rect(-271.999,-21.1985,543.998,42.3969)" text="" font-familyName="Helvetica"
+                          font-pixelSize="20" font-bold="0" font-underline="0" font-alignment="1" strokeStyle="0"
+                          markerStart="0" markerEnd="0" shadowEnabled="0" shadowOffsetX="0" shadowOffsetY="2"
+                          shadowBlur="4"
+                          shadowOpacity="160" blurEnabled="0" blurRadius="4"
+                          transform="matrix(1.03676,0,0,0.943465,282.498,60.5)" pers-center="0,0" pers-size="0,0"
+                          pers-start="0,0" pers-end="0,0" locked="0" mesh="" flag=""/>
+                    <path id="shapePath3"
+                          d="M4.64236,78.466 C-16.093,78.466 46.732,83.0425 66.8482,78.466 C102.958,70.251 133.304,40.7274 170.525,40.7274 C195.445,40.7274 208.149,74.7378 232.731,78.466 C254.29,81.7359 273.08,59.5967 294.937,59.5967 C310.392,59.5967 321.162,80.7782 336.407,78.466 C366.897,73.8417 388.859,45.3517 419.348,40.7274 C434.593,38.4153 467.204,54.3733 481.554,59.5967 C501.848,66.9837 522.556,73.642 543.76,78.466 C550.466,79.9915 564.495,78.466 564.495,78.466 C564.495,78.466 184.348,78.466 4.64236,78.466 Z"
+                          style="stroke:none;fill-rule:evenodd;fill:#09fc83;fill-opacity:1;"/>
+                </g>
+            </g>
+            <g id="Layer4" name="Layer 4" opacity="1">
+                <g id="Shape4">
+                    <desc shapeID="4" type="0" basicInfo-basicType="0" basicInfo-roundedRectRadius="12"
+                          basicInfo-polygonSides="6" basicInfo-starPoints="5"
+                          bounding="rect(-260.001,-22.4804,520.002,44.9608)" text="" font-familyName="Helvetica"
+                          font-pixelSize="20" font-bold="0" font-underline="0" font-alignment="1" strokeStyle="0"
+                          markerStart="0" markerEnd="0" shadowEnabled="0" shadowOffsetX="0" shadowOffsetY="2"
+                          shadowBlur="4"
+                          shadowOpacity="160" blurEnabled="0" blurRadius="4"
+                          transform="matrix(1.07692,0,0,0.889664,280.5,60.5)" pers-center="0,0" pers-size="0,0"
+                          pers-start="0,0" pers-end="0,0" locked="0" mesh="" flag=""/>
+                    <path id="shapePath4"
+                          d="M0.499969,79.3816 C0.499969,79.3816 43.7934,81.898 65.1154,79.3816 C94.4196,75.9232 121.667,61.5883 151.269,61.5883 C173.973,61.5883 193.181,79.3816 215.885,79.3816 C231.938,79.3816 242.908,61.5883 258.962,61.5883 C275.015,61.5883 286.464,82.5982 302.038,79.3816 C321.739,75.3129 325.203,47.085 345.115,43.795 C367.378,40.1167 387.027,61.5883 409.731,61.5883 C432.434,61.5883 458.292,30.5327 474.346,43.795 C495.885,61.5883 560.5,79.3816 560.5,79.3816 C560.5,79.3816 0.499969,79.3816 0.499969,79.3816 Z"
+                          style="stroke:none;fill-rule:evenodd;fill:#fcfafc;fill-opacity:0.768627;"/>
+                </g>
+            </g>
+        </svg>
+    </div>
+
+
 </body>
 </html>

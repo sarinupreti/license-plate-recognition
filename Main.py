@@ -8,6 +8,8 @@ import pymysql
 from flask import Flask, render_template, request
 from werkzeug.utils import secure_filename, redirect
 
+from flask_sqlalchemy import SQLAlchemy
+
 import DetectCharactersHelper
 import DetectPlatesHelper
 
@@ -16,10 +18,11 @@ app = Flask(__name__)
 global numberplateintotext
 numberplateintotext = ""
 
+ALLOWED_EXTENSION = ['.jpg, .png, .jpeg, .gif']
 APP_ROOT = os.path.dirname(os.path.dirname(__file__))
 UPLOAD_FOLDER = '/home/sarin/PycharmProjects/AI_PROJECTS/UPLOAD_FOLDER/'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-ALLOWED_EXTENSION = ['.jpg, .png, .jpeg, .gif']
+
 
 black = (0.0, 0.0, 0.0)
 white = (255.0, 255.0, 255.0)
@@ -63,16 +66,24 @@ def upload():
 
 @app.route("/uploads/data", methods=['GET', 'POST'])
 def data():
-    global results;
     db = pymysql.connect("localhost", "testuser", "test123", "number_plate_recognition")
     cursor = db.cursor()
     sql = "SELECT * FROM information"
-    print(sql)
     try:
         # Execute the SQL command
         cursor.execute(sql)
-
         results = cursor.fetchall()
+
+        print("====================================================================================")
+        print("====================================================================================")
+        print("")
+
+        print(results,"it is hereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee")
+
+        print("")
+        print("====================================================================================")
+        print("====================================================================================")
+
         for row in results:
             ID = row[0]
             OwnerName = row[1]
@@ -80,10 +91,17 @@ def data():
             LicenseNumber = row[3]
             ManufactureDate = row[4]
             ChassisNo = row[5]
+
+            print("=======================================DATABASE QUERY=============================================")
+            print("====================================================================================")
+            print("")
             print("ID=%s,OwnerName=%s,Company=%s,LicenseNumber=%s,ManufactureDate=%s, ChassisNo=%s" %
                   (ID, OwnerName, Company, LicenseNumber, ManufactureDate, ChassisNo))
+            print("")
+            print("====================================================================================")
+            print("====================================================================================")
     except:
-        print("Error: unable to fecth data")
+        print("Error: unable to fetch data")
 
     # disconnect from server
     db.close()

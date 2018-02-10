@@ -4,6 +4,8 @@
     <list default="true" id="041d199a-59bc-4506-ad6e-68cde0f1fd2b" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/Main.py" afterPath="$PROJECT_DIR$/Main.py" />
+      <change beforePath="$PROJECT_DIR$/original_Image.png" afterPath="$PROJECT_DIR$/original_Image.png" />
+      <change beforePath="$PROJECT_DIR$/templates/data.html" afterPath="$PROJECT_DIR$/templates/data.html" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -13,7 +15,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/AI_PROJECTS$Main.coverage" NAME="Main Coverage Results" MODIFIED="1518272083838" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/AI_PROJECTS$Main.coverage" NAME="Main Coverage Results" MODIFIED="1518279702481" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/AI_PROJECTS$DatabaseConnector.coverage" NAME="DatabaseConnector Coverage Results" MODIFIED="1518196219678" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/AI_PROJECTS$ReadDatabase.coverage" NAME="ReadDatabase Coverage Results" MODIFIED="1518193691012" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/AI_PROJECTS$setup.coverage" NAME="setup Coverage Results" MODIFIED="1516722393917" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
@@ -38,39 +40,14 @@
       <file leaf-file-name="Main.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="312">
-              <caret line="99" column="19" lean-forward="false" selection-start-line="99" selection-start-column="19" selection-end-line="99" selection-end-column="19" />
+            <state relative-caret-position="17">
+              <caret line="106" column="296" lean-forward="false" selection-start-line="106" selection-start-column="290" selection-end-line="106" selection-end-column="296" />
               <folding>
                 <element signature="e#10#19#0" expanded="true" />
-                <marker date="1518272352259" expanded="true" signature="2057:2082" ph="SELECT * FRO... information" />
-                <marker date="1518272352259" expanded="true" signature="2083:6291" ph="SELECT * FRO... information" />
-                <marker date="1518272352259" expanded="true" signature="3764:4058" ph="SELECT * FRO... information" />
+                <marker date="1518279331431" expanded="true" signature="2057:2082" ph="SELECT * FRO... information" />
+                <marker date="1518279331431" expanded="true" signature="2057:2092" ph="SELECT * FRO... information" />
+                <marker date="1518279331431" expanded="true" signature="2057:2117" ph="SELECT * FRO... information" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DatabaseConnector.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/DatabaseConnector.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="62" />
-              <folding>
-                <marker date="1518196659175" expanded="true" signature="229:254" ph="SELECT * FRO... information" />
-                <marker date="1518196659175" expanded="true" signature="229:255" ph="SELECT * FRO... information" />
-                <marker date="1518196659175" expanded="true" signature="229:265" ph="SELECT * FRO... information" />
-                <marker date="1518196659175" expanded="true" signature="229:281" ph="SELECT * FRO... information" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="data.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/data.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -130,9 +107,9 @@
         <option value="$PROJECT_DIR$/templates/index.html" />
         <option value="$PROJECT_DIR$/templates/upload.html" />
         <option value="$PROJECT_DIR$/templates/completed.html" />
-        <option value="$PROJECT_DIR$/templates/data.html" />
         <option value="$PROJECT_DIR$/DatabaseConnector.py" />
         <option value="$PROJECT_DIR$/Main.py" />
+        <option value="$PROJECT_DIR$/templates/data.html" />
       </list>
     </option>
   </component>
@@ -143,7 +120,6 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="960" />
     <option name="width" value="960" />
     <option name="height" value="1080" />
   </component>
@@ -163,7 +139,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -185,6 +160,7 @@
         </subPane>
       </pane>
       <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -332,14 +308,15 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1920" height="1080" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32912722" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32912722" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33543637" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3280757" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.104055494" sideWeight="0.4945227" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33543637" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.13038906" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.106189966" sideWeight="0.4945227" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="SciView" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32977587" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -412,9 +389,9 @@
           <caret line="30" column="37" lean-forward="false" selection-start-line="30" selection-start-column="37" selection-end-line="30" selection-end-column="37" />
           <folding>
             <element signature="e#10#19#0" expanded="true" />
-            <marker date="1518272352259" expanded="true" signature="2057:2082" ph="SELECT * FRO... information" />
-            <marker date="1518272352259" expanded="true" signature="2083:6291" ph="SELECT * FRO... information" />
-            <marker date="1518272352259" expanded="true" signature="3764:4058" ph="SELECT * FRO... information" />
+            <marker date="1518279331431" expanded="true" signature="2057:2082" ph="SELECT * FRO... information" />
+            <marker date="1518279331431" expanded="true" signature="2057:2092" ph="SELECT * FRO... information" />
+            <marker date="1518279331431" expanded="true" signature="2057:2117" ph="SELECT * FRO... information" />
           </folding>
         </state>
       </provider>
@@ -446,9 +423,9 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#10#19#0" expanded="true" />
-            <marker date="1518272352259" expanded="true" signature="2057:2082" ph="SELECT * FRO... information" />
-            <marker date="1518272352259" expanded="true" signature="2083:6291" ph="SELECT * FRO... information" />
-            <marker date="1518272352259" expanded="true" signature="3764:4058" ph="SELECT * FRO... information" />
+            <marker date="1518279331431" expanded="true" signature="2057:2082" ph="SELECT * FRO... information" />
+            <marker date="1518279331431" expanded="true" signature="2057:2092" ph="SELECT * FRO... information" />
+            <marker date="1518279331431" expanded="true" signature="2057:2117" ph="SELECT * FRO... information" />
           </folding>
         </state>
       </provider>
@@ -466,9 +443,9 @@
           <caret line="30" column="37" lean-forward="false" selection-start-line="30" selection-start-column="37" selection-end-line="30" selection-end-column="37" />
           <folding>
             <element signature="e#10#19#0" expanded="true" />
-            <marker date="1518272352259" expanded="true" signature="2057:2082" ph="SELECT * FRO... information" />
-            <marker date="1518272352259" expanded="true" signature="2083:6291" ph="SELECT * FRO... information" />
-            <marker date="1518272352259" expanded="true" signature="3764:4058" ph="SELECT * FRO... information" />
+            <marker date="1518279331431" expanded="true" signature="2057:2082" ph="SELECT * FRO... information" />
+            <marker date="1518279331431" expanded="true" signature="2057:2092" ph="SELECT * FRO... information" />
+            <marker date="1518279331431" expanded="true" signature="2057:2117" ph="SELECT * FRO... information" />
           </folding>
         </state>
       </provider>
@@ -486,9 +463,9 @@
           <caret line="30" column="37" lean-forward="false" selection-start-line="30" selection-start-column="37" selection-end-line="30" selection-end-column="37" />
           <folding>
             <element signature="e#10#19#0" expanded="true" />
-            <marker date="1518272352259" expanded="true" signature="2057:2082" ph="SELECT * FRO... information" />
-            <marker date="1518272352259" expanded="true" signature="2083:6291" ph="SELECT * FRO... information" />
-            <marker date="1518272352259" expanded="true" signature="3764:4058" ph="SELECT * FRO... information" />
+            <marker date="1518279331431" expanded="true" signature="2057:2082" ph="SELECT * FRO... information" />
+            <marker date="1518279331431" expanded="true" signature="2057:2092" ph="SELECT * FRO... information" />
+            <marker date="1518279331431" expanded="true" signature="2057:2117" ph="SELECT * FRO... information" />
           </folding>
         </state>
       </provider>
@@ -513,9 +490,9 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#10#19#0" expanded="true" />
-            <marker date="1518272352259" expanded="true" signature="2057:2082" ph="SELECT * FRO... information" />
-            <marker date="1518272352259" expanded="true" signature="2083:6291" ph="SELECT * FRO... information" />
-            <marker date="1518272352259" expanded="true" signature="3764:4058" ph="SELECT * FRO... information" />
+            <marker date="1518279331431" expanded="true" signature="2057:2082" ph="SELECT * FRO... information" />
+            <marker date="1518279331431" expanded="true" signature="2057:2092" ph="SELECT * FRO... information" />
+            <marker date="1518279331431" expanded="true" signature="2057:2117" ph="SELECT * FRO... information" />
           </folding>
         </state>
       </provider>
@@ -540,9 +517,9 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#10#19#0" expanded="true" />
-            <marker date="1518272352259" expanded="true" signature="2057:2082" ph="SELECT * FRO... information" />
-            <marker date="1518272352259" expanded="true" signature="2083:6291" ph="SELECT * FRO... information" />
-            <marker date="1518272352259" expanded="true" signature="3764:4058" ph="SELECT * FRO... information" />
+            <marker date="1518279331431" expanded="true" signature="2057:2082" ph="SELECT * FRO... information" />
+            <marker date="1518279331431" expanded="true" signature="2057:2092" ph="SELECT * FRO... information" />
+            <marker date="1518279331431" expanded="true" signature="2057:2117" ph="SELECT * FRO... information" />
           </folding>
         </state>
       </provider>
@@ -711,36 +688,29 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/data.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/DatabaseConnector.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="62" />
-          <folding>
-            <marker date="1518196659175" expanded="true" signature="229:254" ph="SELECT * FRO... information" />
-            <marker date="1518196659175" expanded="true" signature="229:255" ph="SELECT * FRO... information" />
-            <marker date="1518196659175" expanded="true" signature="229:265" ph="SELECT * FRO... information" />
-            <marker date="1518196659175" expanded="true" signature="229:281" ph="SELECT * FRO... information" />
-          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/data.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="136" column="25" lean-forward="false" selection-start-line="136" selection-start-column="25" selection-end-line="136" selection-end-column="25" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="312">
-          <caret line="99" column="19" lean-forward="false" selection-start-line="99" selection-start-column="19" selection-end-line="99" selection-end-column="19" />
+        <state relative-caret-position="17">
+          <caret line="106" column="296" lean-forward="false" selection-start-line="106" selection-start-column="290" selection-end-line="106" selection-end-column="296" />
           <folding>
             <element signature="e#10#19#0" expanded="true" />
-            <marker date="1518272352259" expanded="true" signature="2057:2082" ph="SELECT * FRO... information" />
-            <marker date="1518272352259" expanded="true" signature="2083:6291" ph="SELECT * FRO... information" />
-            <marker date="1518272352259" expanded="true" signature="3764:4058" ph="SELECT * FRO... information" />
+            <marker date="1518279331431" expanded="true" signature="2057:2082" ph="SELECT * FRO... information" />
+            <marker date="1518279331431" expanded="true" signature="2057:2092" ph="SELECT * FRO... information" />
+            <marker date="1518279331431" expanded="true" signature="2057:2117" ph="SELECT * FRO... information" />
           </folding>
         </state>
       </provider>

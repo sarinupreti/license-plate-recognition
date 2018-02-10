@@ -68,45 +68,43 @@ def upload():
 def data():
     db = pymysql.connect("localhost", "testuser", "test123", "number_plate_recognition")
     cursor = db.cursor()
-    sql = "SELECT * FROM information"
+    sql = "SELECT * FROM information WHERE ID='"+numberplateintotext+"'"
+    print(sql)
+    #ya hera
     try:
         # Execute the SQL command
         cursor.execute(sql)
         results = cursor.fetchall()
-
-        print("====================================================================================")
-        print("====================================================================================")
-        print("")
-
-        print(results,"it is hereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee")
-
-        print("")
-        print("====================================================================================")
-        print("====================================================================================")
-
         for row in results:
             ID = row[0]
-            OwnerName = row[1]
-            Company = row[2]
-            LicenseNumber = row[3]
-            ManufactureDate = row[4]
-            ChassisNo = row[5]
+            CompanyName = row[1]
+            ModelNumber = row[2]
+            ManufactureDate = row[3]
+            HorsePower = row[4]
+            CC = row[5]
+            EngineNumber = row[6]
+            ChassisNo = row[7]
+            EngineType = row[8]
+            SeaterCapacity = row[9]
+            BorderEntrance = row [10]
+            VechileType = row[11]
+            VechileColor = row[12]
+
 
             print("=======================================DATABASE QUERY=============================================")
             print("====================================================================================")
             print("")
-            print("ID=%s,OwnerName=%s,Company=%s,LicenseNumber=%s,ManufactureDate=%s, ChassisNo=%s" %
-                  (ID, OwnerName, Company, LicenseNumber, ManufactureDate, ChassisNo))
+            print("ID=%s,CompanyName=%s,ModelNumber=%s,ManufactureDate=%s,HorsePower=%d, CC=%d, EngineNumber=%s, ChassisNo=%s, EngineType=%s, SeaterCapacity=%d, BorderEntrance=%s, VechileType=%s, VechileColor=%s "                       %
+                  (ID, CompanyName, ModelNumber, ManufactureDate, HorsePower,CC,EngineNumber,ChassisNo,EngineType,SeaterCapacity, BorderEntrance ,VechileType, VechileColor ))
             print("")
             print("====================================================================================")
             print("====================================================================================")
     except:
         print("Error: unable to fetch data")
-
-    # disconnect from server
-    db.close()
-    return render_template("data.html", query=results)
-
+    finally:
+        # disconnect from server
+        db.close()
+        return render_template("data.html", query=results, id=ID, companyname = CompanyName, modelnumber= ModelNumber, manufacturedate=ManufactureDate, horsepower= HorsePower, cc= CC, enginenumber= EngineNumber, chassisno = ChassisNo, enginetype=EngineType, seatercapacity= SeaterCapacity, border=BorderEntrance, vechiletype= VechileType, color= VechileColor)
 
 def main(path):
     dataTraining = DetectCharactersHelper.loadDataAndTrain()  # attempt KNN training

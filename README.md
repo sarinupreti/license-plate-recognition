@@ -1,4 +1,4 @@
-# license-plate-recognition
+# Nepali-license-plate-recognition
 license plate recognition using python and openCV3
 
 
